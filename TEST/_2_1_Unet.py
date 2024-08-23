@@ -11,21 +11,21 @@ def unet_model(input_size=(128, 128, 3)):
     # 编码器
     c1 = Conv2D(64, (3, 3), (1, 1), 'same', activation='relu')(inputs)
     c1 = Conv2D(64, (3, 3), (1, 1), 'same', activation='relu')(c1)
-    p1 = MaxPooling2D((2, 2))(c1)  # 0.5
 
+    p1 = MaxPooling2D((2, 2))(c1)  # 0.5
     c2 = Conv2D(128, (3, 3), (1, 1), 'same', activation='relu')(p1)
     c2 = Conv2D(128, (3, 3), (1, 1), 'same', activation='relu')(c2)
-    p2 = MaxPooling2D((2, 2))(c2)  # 0。25
 
+    p2 = MaxPooling2D((2, 2))(c2)  # 0。25
     c3 = Conv2D(256, (3, 3), (1, 1), 'same', activation='relu')(p2)
     c3 = Conv2D(256, (3, 3), (1, 1), 'same', activation='relu')(c3)
-    p3 = MaxPooling2D((2, 2))(c3)  # 0.125
 
+    p3 = MaxPooling2D((2, 2))(c3)  # 0.125
     c4 = Conv2D(512, (3, 3), (1, 1), 'same', activation='relu')(p3)
     c4 = Conv2D(512, (3, 3), (1, 1), 'same', activation='relu')(c4)
-    p4 = MaxPooling2D((2, 2))(c4)  # 0.0625
 
     # 编码器底层
+    p4 = MaxPooling2D((2, 2))(c4)  # 0.0625
     c5 = Conv2D(1024, (3, 3), (1, 1), 'same', activation='relu')(p4)
     c5 = Conv2D(1024, (3, 3), (1, 1), 'same', activation='relu')(c5)
 
@@ -57,3 +57,5 @@ def unet_model(input_size=(128, 128, 3)):
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
     return model
+
+
